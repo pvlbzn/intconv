@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryGrey">#EEEEEE</color>
+    <color name="colorPrimaryDarkGrey">#D0D0D0</color>
+    <color name="colorAccentGrey">#4A90E2</color>
+
+    <color name="darkButton">#212121</color>
+    <color name="brightTextPrimary">#FFFFFF</color>
+
+    <!-- Light theme -->
+    <color name="lightBackground">#FFEEEEEE</color>
+    <color name="lightFont38">#61000000</color>
+    <color name="lightFont54">#89000000</color>
+    <color name="lightFont87">#DE000000</color>
+
+    <!-- Dark theme -->
+    <color name="darkBackground">#FF212121</color>
+    <color name="darkFont100">#FFFFFFFF</color>
+    <color name="darkFont70">#B2FFFFFF</color>
+    <color name="darkFont50">#7FFFFFFF</color>
+
+</resources>
