@@ -5,7 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.pvlbzn.intconv.fragments.ChatFragment;
 
-
+/*
+ * CommunicationActivity class is a parent class for chat UI. Input UI implemented
+ * in XML layout, chat messages implemented in ChatFragment class.
+ */
 public class CommunicationActivity extends AppCompatActivity {
 
     @Override
@@ -14,9 +17,6 @@ public class CommunicationActivity extends AppCompatActivity {
         // Assign a layout.
         setContentView(R.layout.activity_communication);
 
-        // Show software keyboard from the beginning.
-        // showKeyboard();
-
         // Add Chat to the View
         ChatFragment cf = new ChatFragment();
         getSupportFragmentManager()
@@ -24,16 +24,5 @@ public class CommunicationActivity extends AppCompatActivity {
                 .add(R.id.chat_container, cf)
                 .commit();
     }
-
-    /*
-    * Because of *I have no idea what* this approach doesn't work properly. Task solved using
-    * AndroidManifest statement.
-    private void showKeyboard() {
-        InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        in.showSoftInput((View)findViewById(android.R.id.content), InputMethodManager.SHOW_IMPLICIT);
-    }
-    */
-
-
 
 }

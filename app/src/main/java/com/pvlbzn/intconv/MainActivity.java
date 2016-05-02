@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Set an event listener on UI button.
-        final Button b = (Button) findViewById(R.id.connect_button);
+        Button b = (Button) findViewById(R.id.connect_button);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /* Open a communication via creating new Intent. */
+    /* Open a communication via creating a new Intent. */
     private void openCommunication() {
         // Create Intent instance.
         Intent i = new Intent(this, CommunicationActivity.class);
