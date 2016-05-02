@@ -1,19 +1,15 @@
 package com.pvlbzn.intconv;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 
-/**
- * Created by pvlbzn on 4/30/16.
- */
+import com.pvlbzn.intconv.fragments.ChatFragment;
+
+
 public class CommunicationActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Assign a layout.
         setContentView(R.layout.activity_communication);
@@ -21,7 +17,12 @@ public class CommunicationActivity extends AppCompatActivity {
         // Show software keyboard from the beginning.
         // showKeyboard();
 
-
+        // Add Chat to the View
+        ChatFragment cf = new ChatFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.chat_container, cf)
+                .commit();
     }
 
     /*
@@ -32,4 +33,7 @@ public class CommunicationActivity extends AppCompatActivity {
         in.showSoftInput((View)findViewById(android.R.id.content), InputMethodManager.SHOW_IMPLICIT);
     }
     */
+
+
+
 }
