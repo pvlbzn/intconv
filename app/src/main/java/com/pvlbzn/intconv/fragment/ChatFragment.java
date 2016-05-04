@@ -6,10 +6,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.pvlbzn.intconv.Message;
 import com.pvlbzn.intconv.R;
+import com.pvlbzn.intconv.adapter.ChatAdapter;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -25,8 +29,8 @@ public class ChatFragment extends Fragment implements MessageInterface {
 
     // View root reference
     private View root = null;
-    private ArrayList<String> al = null;
-    private ArrayAdapter<String> aa = null;
+    private ArrayList<Message> al = null;
+    private ChatAdapter aa = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,34 +43,22 @@ public class ChatFragment extends Fragment implements MessageInterface {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Fake data for test
-        /*
-        al = new ArrayList<>(100);
-        for (int i = 0; i < 100; i++) {
-            al.add(String.valueOf(i));
-        }
-
-        Log.v(TAG, al.toString());
-        */
-
         al = new ArrayList<>();
 
         // Create an ArrayAdapter
-        aa = new ArrayAdapter<>(getActivity(), R.layout.list_item, al);
+        aa = new ChatAdapter(getContext(), al, (ViewGroup)view.getParent());
+
         ListView lv = (ListView) root.findViewById(R.id.chat_list_view);
         lv.setAdapter(aa);
     }
 
-    // Add a message to the ArrayList.
-    private void addMessage(String msg) {
-        al.add(msg);
-    }
 
     /* MessageInterface implementation. */
 
     public void receiveMessage(String msg) {
-        Log.v(TAG, "Received" + msg);
-        addMessage(msg);
+        Log.v(TAG, "Received: " + msg);
+        Message m = new Message("user", msg);
+        al.add(m);
         aa.notifyDataSetChanged();
     }
 

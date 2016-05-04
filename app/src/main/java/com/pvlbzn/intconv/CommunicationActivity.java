@@ -26,7 +26,7 @@ public class CommunicationActivity extends AppCompatActivity {
         // Assign a layout.
         setContentView(R.layout.activity_communication);
 
-        // Add Chat to the View
+        // Add ChatAdapter to the View
         ChatFragment cf = new ChatFragment();
         cfInterface = (MessageInterface) cf;
         getSupportFragmentManager()
