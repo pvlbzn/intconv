@@ -16,7 +16,7 @@ import com.pvlbzn.intconv.fragment.MessageInterface;
  */
 public class CommunicationActivity extends AppCompatActivity {
 
-    private final String TAG = getLocalClassName();
+    private final String TAG = "CommunicationActivity";
 
     private MessageInterface cfInterface;
 
