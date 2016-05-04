@@ -23,12 +23,15 @@ public class CommunicationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         // Assign a layout.
         setContentView(R.layout.activity_communication);
-
         // Add ChatAdapter to the View
         ChatFragment cf = new ChatFragment();
+        // Cast chat fragment down to an interface.
         cfInterface = (MessageInterface) cf;
+
+        // Attach a fragment to an activity.
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.chat_container, cf)

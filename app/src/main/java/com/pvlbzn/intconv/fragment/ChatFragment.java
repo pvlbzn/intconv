@@ -2,18 +2,14 @@ package com.pvlbzn.intconv.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.pvlbzn.intconv.Message;
 import com.pvlbzn.intconv.R;
 import com.pvlbzn.intconv.adapter.ChatAdapter;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -27,10 +23,10 @@ public class ChatFragment extends Fragment implements MessageInterface {
     public ChatFragment() {
     }
 
-    // View root reference
-    private View root = null;
-    private ArrayList<Message> al = null;
-    private ChatAdapter aa = null;
+    // Global references
+    private View root               = null;
+    private ArrayList<Message> al   = null;
+    private ChatAdapter ca          = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,24 +39,25 @@ public class ChatFragment extends Fragment implements MessageInterface {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Create an array list which will store all the messages.
         al = new ArrayList<>();
+        // Create a custom ArrayAdapter which is layout-aware of the different sources.
+        ca = new ChatAdapter(getContext(), al, (ViewGroup)view.getParent());
 
-        // Create an ArrayAdapter
-        aa = new ChatAdapter(getContext(), al, (ViewGroup)view.getParent());
-
+        // Find a list view and attach ChatAdapter to it.
         ListView lv = (ListView) root.findViewById(R.id.chat_list_view);
-        lv.setAdapter(aa);
+        lv.setAdapter(ca);
     }
 
 
     /* MessageInterface implementation. */
 
     public void receiveMessage(String msg) {
-        Log.v(TAG, "Received: " + msg);
-        Message m = new Message("user", msg);
+        // Create a new message object from user input, add it to the array list,
+        // which expects to receive Message type. Notify data set about change.
+        Message m = new Message(Message.USER, "user", msg);
         al.add(m);
-        aa.notifyDataSetChanged();
+        ca.notifyDataSetChanged();
     }
-
 
 }

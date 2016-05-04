@@ -1,13 +1,20 @@
 package com.pvlbzn.intconv;
 
-
+/*
+ * Message class is represent a message.
+ */
 public class Message {
 
-    public String sender;
+    public int source;
+    public String uname;
     public String msg;
 
-    public Message(String s, String m) {
-        this.sender = s;
+    public static int USER = 1;
+    public static int REMOTE = 2;
+
+    public Message(int s, String n, String m) {
+        this.source = s;
+        this.uname =  n;
         this.msg = m;
     }
 
