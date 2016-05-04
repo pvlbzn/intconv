@@ -15,12 +15,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Set an event listener on UI button.
         Button b = (Button) findViewById(R.id.connect_button);
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openCommunication();
-            }
-        });
+        if (b != null) {
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openCommunication();
+                }
+            });
+        }
     }
 
     /* Open a communication via creating a new Intent. */

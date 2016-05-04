@@ -18,12 +18,14 @@
 
         <!-- Input field. -->
         <EditText
+            android:id="@+id/user_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5" />
 
         <!-- Send a message. -->
         <Button
+            android:id="@+id/send_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

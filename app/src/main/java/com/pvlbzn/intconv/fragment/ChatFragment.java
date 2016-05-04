@@ -1,4 +1,4 @@
-package com.pvlbzn.intconv.fragments;
+package com.pvlbzn.intconv.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,7 +14,7 @@ import com.pvlbzn.intconv.R;
 import java.util.ArrayList;
 
 
-public class ChatFragment extends Fragment {
+public class ChatFragment extends Fragment implements MessageInterface {
 
     // Logging
     private static final String TAG = "ChatFragment";
@@ -24,7 +24,9 @@ public class ChatFragment extends Fragment {
     }
 
     // View root reference
-    View root = null;
+    private View root = null;
+    private ArrayList<String> al = null;
+    private ArrayAdapter<String> aa = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,17 +39,36 @@ public class ChatFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Fake data
-        ArrayList<String> al = new ArrayList<>(100);
+        // Fake data for test
+        /*
+        al = new ArrayList<>(100);
         for (int i = 0; i < 100; i++) {
             al.add(String.valueOf(i));
         }
 
         Log.v(TAG, al.toString());
+        */
+
+        al = new ArrayList<>();
 
         // Create an ArrayAdapter
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<>(getActivity(), R.layout.list_item, al);
+        aa = new ArrayAdapter<>(getActivity(), R.layout.list_item, al);
         ListView lv = (ListView) root.findViewById(R.id.chat_list_view);
-        lv.setAdapter(itemsAdapter);
+        lv.setAdapter(aa);
     }
+
+    // Add a message to the ArrayList.
+    private void addMessage(String msg) {
+        al.add(msg);
+    }
+
+    /* MessageInterface implementation. */
+
+    public void receiveMessage(String msg) {
+        Log.v(TAG, "Received" + msg);
+        addMessage(msg);
+        aa.notifyDataSetChanged();
+    }
+
+
 }
