@@ -32,11 +32,11 @@ public class ChatAdapter extends ArrayAdapter<Message> {
     // a remote source inflate "start-hand side" layout. This condition
     // is pretty much the main reason for a custom ArrayAdapter.
     if (m.source == Message.USER) {
-        convertView =
-            LayoutInflater.from(getContext()).inflate(R.layout.list_item_output, parent, false);
+      convertView =
+          LayoutInflater.from(getContext()).inflate(R.layout.list_item_output, parent, false);
     } else if (m.source == Message.REMOTE) {
-        convertView =
-            LayoutInflater.from(getContext()).inflate(R.layout.list_item_input, parent, false);
+      convertView =
+          LayoutInflater.from(getContext()).inflate(R.layout.list_item_input, parent, false);
     }
 
     // Find text view in layout which was set before. Both layouts have

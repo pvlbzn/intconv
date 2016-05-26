@@ -87,14 +87,14 @@ public class CommunicationActivity extends AppCompatActivity {
         PrintStream out = new PrintStream(sock.getOutputStream());
         BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 
-        out.print(msg+"\n");
+        out.print(msg + "\n");
 
         answer = in.readLine();
 
         // Flush and close.
-        out .flush();
-        out .close();
-        in  .close();
+        out.flush();
+        out.close();
+        in.close();
         sock.close();
       } catch (IOException ioe) {
         Log.e(TAG, ioe.toString());
@@ -110,7 +110,5 @@ public class CommunicationActivity extends AppCompatActivity {
       super.onPostExecute(s);
       cfInterface.receiveMessage(answer, Message.REMOTE);
     }
-
   }
-
 }
