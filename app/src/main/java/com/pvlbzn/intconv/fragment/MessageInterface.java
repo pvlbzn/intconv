@@ -5,5 +5,5 @@ package com.pvlbzn.intconv.fragment;
  * by Fragment in order to receive a message from Activity.
  */
 public interface MessageInterface {
-    public void receiveMessage(String msg);
+  public void receiveMessage(String msg, int sender);
 }

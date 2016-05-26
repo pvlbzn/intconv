@@ -5,17 +5,16 @@ package com.pvlbzn.intconv;
  */
 public class Message {
 
-    public int source;
-    public String uname;
-    public String msg;
+  public int source;
+  public String uname;
+  public String msg;
 
-    public static int USER = 1;
-    public static int REMOTE = 2;
+  public static int USER = 1;
+  public static int REMOTE = 2;
 
-    public Message(int s, String n, String m) {
-        this.source = s;
-        this.uname =  n;
-        this.msg = m;
-    }
-
+  public Message(int s, String n, String m) {
+    this.source = s;
+    this.uname = n;
+    this.msg = m;
+  }
 }
