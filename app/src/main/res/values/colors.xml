@@ -12,6 +12,10 @@
     <color name="lightFont38">#61000000</color>
     <color name="lightFont54">#89000000</color>
     <color name="lightFont87">#DE000000</color>
+    <color name="darkBubble">#FF212121</color>
+    <color name="lightBubble">#B3212121</color>
+    <color name="outFont">#FFFFFFFF</color>
+    <color name="inFont">#FFFFFFFF</color>
 
     <!-- Dark theme -->
     <color name="darkBackground">#FF212121</color>

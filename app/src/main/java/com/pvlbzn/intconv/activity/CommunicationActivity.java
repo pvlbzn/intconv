@@ -1,7 +1,10 @@
-package com.pvlbzn.intconv;
+package com.pvlbzn.intconv.activity;
 
+import com.pvlbzn.intconv.R;
 import com.pvlbzn.intconv.fragment.ChatFragment;
 import com.pvlbzn.intconv.fragment.MessageInterface;
+import com.pvlbzn.intconv.message.Message;
+import com.pvlbzn.intconv.message.Sanitizer;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -54,6 +57,9 @@ public class CommunicationActivity extends AppCompatActivity {
             public void onClick(View v) {
               // Get user message.
               String umsg = uInput.getText().toString();
+              // Clean input field.
+              uInput.setText("");
+              uInput.setHint(R.string.input_placeholder);
               // Sanitize it and show.
               cfInterface.receiveMessage(Sanitizer.process(umsg), Message.USER);
               // Send it to the server, and store response in local variable.
@@ -68,6 +74,7 @@ public class CommunicationActivity extends AppCompatActivity {
 
   private class SendTask extends AsyncTask<String, Void, String> {
 
+    // TODO: WATCH OUT FOR AN ENDPOINT
     private final String endpoint = "192.168.1.69";
     private final int port = 24000;
 
@@ -81,14 +88,14 @@ public class CommunicationActivity extends AppCompatActivity {
 
     private void connect(String msg) {
       try {
+        // Emulate network processing
         Thread.sleep(800);
-        Socket sock = new Socket(endpoint, port);
 
+        Socket sock = new Socket(endpoint, port);
         PrintStream out = new PrintStream(sock.getOutputStream());
         BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 
         out.print(msg + "\n");
-
         answer = in.readLine();
 
         // Flush and close.
@@ -101,7 +108,7 @@ public class CommunicationActivity extends AppCompatActivity {
         answer = "Connection failed.";
       } catch (InterruptedException ie) {
         Log.e(TAG, ie.toString());
-        answer = "Connection failed.";
+        answer = "Connection Interrupted.";
       }
     }
 
@@ -111,4 +118,5 @@ public class CommunicationActivity extends AppCompatActivity {
       cfInterface.receiveMessage(answer, Message.REMOTE);
     }
   }
+
 }

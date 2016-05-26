@@ -1,4 +1,4 @@
-package com.pvlbzn.intconv;
+package com.pvlbzn.intconv.message;
 
 /*
  * Message class is represent a message.

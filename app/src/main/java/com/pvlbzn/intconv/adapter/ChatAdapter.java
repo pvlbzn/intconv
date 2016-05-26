@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.pvlbzn.intconv.Message;
+import com.pvlbzn.intconv.message.Message;
 import com.pvlbzn.intconv.R;
 
 import java.util.ArrayList;

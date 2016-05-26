@@ -1,4 +1,4 @@
-package com.pvlbzn.intconv;
+package com.pvlbzn.intconv.message;
 
 /*
  * Sanitizer class provides static method for message checking.

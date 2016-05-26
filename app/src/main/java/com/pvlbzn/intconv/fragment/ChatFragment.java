@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.pvlbzn.intconv.Message;
+import com.pvlbzn.intconv.message.Message;
 import com.pvlbzn.intconv.R;
 import com.pvlbzn.intconv.adapter.ChatAdapter;
 
@@ -59,4 +59,5 @@ public class ChatFragment extends Fragment implements MessageInterface {
     if (m != null) al.add(m);
     ca.notifyDataSetChanged();
   }
+
 }
